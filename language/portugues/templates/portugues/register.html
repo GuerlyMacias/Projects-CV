@@ -1,0 +1,206 @@
+{% extends "portugues/layout.html" %}
+{% load static %}
+{% block title %} Control {% endblock %}
+{% block link %}
+    <link href="{% static 'css/control.css' %}"  rel="stylesheet"> 
+{% endblock %}
+
+{% block body %}
+<h2 style="display: block; font-family:'Young Serif', serif; margin-left: 50px; margin-top: 20px;">LIÇÕES E EXAMES</h2>
+    <div class="lines">
+        
+        <div class="daddy">
+            
+            <h4 id="mess" style="color: red;" >{{message}}</h4>
+            <h3>Adicionar aulas</h3>
+            <form action="{% url 'entrylessons' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label>Indexação</label>
+                <br>
+                <input name="number_lesson" autocomplete="off" type="number" >
+                <br>
+                <br>
+                <label>Qualificação</label>
+                <br>
+                <input autocomplete="off" name="title" type="text">
+                <br>
+                <br>
+                <label>Teórico</label>
+                <br>
+                <textarea placeholder="Escreva aqui" name="theoric" rows="10" cols="60"></textarea>
+                <br>
+                <br>
+                <label>Ajuda externa</label>
+                <br>
+                <input name="urlx" type="url" >
+                <br>
+                <label>Vídeo</label>
+                <br>
+                <input name="videox" type="url">
+                <br>
+                <br>
+                <label>Arquivo: </label>
+                <input name="filex" type="file">
+                <button type="submit">Salvar</button>
+            </form>
+            <br>
+            <br>
+        </div>
+
+
+        <div class="daddy">
+            <h3>Ingresso de testes</h3>
+            <br>
+
+            
+            <h4 id="mess" style="color: red;" >{{messagex}}</h4>
+            <form action="{% url 'entryExam' %}" method="post">
+                {% csrf_token %}
+                <label>Indexação</label>
+                <br>
+                <input id="attencion" name="lesson" type="number" >
+                <br>
+                <br>
+                <label>Perguntar</label>
+                <br>
+                <input name="question" type="text">
+                <br>
+                <br>
+                <label>Correto</label>
+                <br>
+                <input name="correct" type="text" ><br><br>
+                <label>Incorreta</label><br>
+                <input name="falseone" type="text" ><br><br>
+                <label>Incorreta</label><br>
+                <input name="falsetwo" type="text" ><br><br>
+                <button type="submit">Salvar</button>
+                <br><br><br><br>
+                <p>Verifique se a indexação do exame corresponde à lição que você deseja vincular</p>
+            </form>
+        </div>
+        
+        <!-- Inlines div end -->
+    </div>
+    <hr>
+    <hr>
+    <h2 style="display: block; font-family:'Young Serif', serif; margin-left: 50px; margin-top: 20px;">USUÁRIOS</h2>
+    <div class="lines">
+        <div class="daddy" >
+            {% if user.is_superuser%}
+                <div onclick="superoff()">
+                    <h4 id="mess" style="color: red; font-size: 20px;" >{{messagem}}</h4>
+                    <h3>Registrar um usuário</h3>
+                    <div class="aligright">
+                        <form action="{% url 'saver' %}" method="post">
+                            {% csrf_token %}
+                            <label> Email: </label>
+                            <br>
+                            <input name="emailx" type="email">
+                            <br>
+                            <br>
+                            <label>Nome de usuário: </label>
+                            <br>
+                            <input autocomplete="off" name="username" type="text" >
+                            <br>
+                            <br>
+                            <button type="submit"> Salvar </button>
+                        </form>
+                    </div>
+                </div>
+                <hr>
+
+                <div class="aligright">
+                    <h4>ALTERAR A SENHA</h4>
+                    <form action="{% url 'passchange' %}" method="post">
+                        {% csrf_token %}
+                        <label>Nome de usuário:</label>
+                        <br>
+                        <input name="chnageuser" type="text">
+                        <br>
+                        <br>
+                        <label>Atual código:</label>
+                        <br>
+                        <input name="old" type="password">
+                        <br>
+                        <br>
+                        <label>Novo código:</label>
+                        <br>
+                        <input name="new" type="password">
+                        <br>
+                        <br>
+                        <button type="submit">Mudar</button>
+                    </form>
+                </div>
+                <br>
+            </div>
+            <div class="daddy">
+                <h3>Registrar um super usuário</h3>
+                <h4 id="mess" style="color: red; font-size: 20px;" >{{messagel}}</h4>
+                <div onclick="superuserx()">
+                    <form action="{% url 'superus' %}" method="post">
+                        {% csrf_token %}
+                        <label> Email: </label>
+                        <br>
+                        <input autocomplete="off" name="supemail" type="email">
+                        <br>
+                        <br>
+                        <label>Nome de usuário: </label>
+                        <br>
+                        <input autocomplete="off" name="superuse" type="text">
+                        <br>
+                        <br>
+                        <label> Criar Senha: </label>
+                        <br>
+                        <input name="passsuper" type="password" >
+                        <br>
+                        <br>
+                        <button type="submit"> Salvar </button>
+                    </form>
+                </div>
+                <br>
+                <hr>
+        
+                <div onclick="exclucion()" class="exclusion">
+                    <h3>Excluir um usuário</h3>
+                    <form action="{% url 'deregister' %}" method="post">
+                        {% csrf_token %}
+                        <label>Nome de usuário: </label>
+                        <br>
+                        <input autocomplete="off" name="deuser" type="text">
+                        <button>Apagar</button>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+        <div id="alerts" style="visibility: hidden;">
+            
+            <h5 id="lembramiento">{{alert}}</h5>
+        </div>
+    </div>
+    <script>
+        const divMessage = document.querySelector('#alerts')
+        
+            function superuserx(){
+                divMessage.style.visibility = 'visible'
+                const element = document.querySelector('#lembramiento')
+                element.innerHTML= ' '
+                element.innerHTML='Permitirá que todas as funcionalidades, incluindo informações confidenciais e sensíveis, sejam atualizadas ou excluídas.'
+
+            }
+            function exclucion(){
+                divMessage.style.visibility = 'visible'
+                const element = document.querySelector('#lembramiento')
+                element.innerHTML ='ALERTA: Isso excluirá TOTALIDADE dos dados do usuário. Não há como recuperar.'
+            }
+        
+        
+    </script>
+        
+    
+
+
+{% endblock %}
+
+<!-- JessiM  1234 -->
+
+

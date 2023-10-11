@@ -1,0 +1,37 @@
+{% extends "portugues/layout.html" %}
+{% load static %}
+{% block title %}
+Escolha o teste
+{% endblock %}
+
+{% block link %}
+    <link href="{% static 'css/choosetest.css' %}" rel="stylesheet" >
+{% endblock %}
+
+{% block body %}
+    <div class="lembrete">
+        <i><strong>LEMBRE-SE:</strong> Você encontrará perguntas com três respostas possíveis, escolha com um clique aquela que considera correta.</i>
+        <hr>
+        {% if user.is_superuser %}
+            <p style="color: red;"><strong>Como SUPERUSUÁRIO desta aplicação web você tem acesso a todos os exames salvos, você pode utilizá-los mas os dados não serão salvos</strong></p>
+        {% endif %}
+
+
+    </div>
+    <div class="lines">
+
+        {% for lesson in lessons %}
+            <a id="link" href="{% url 'teste' lesson.number_lesson %}">
+                <div class="continer">
+                    <h4>Exame para aula # {{lesson.number_lesson}}</h4>
+                </div>
+                <br>
+            </a>
+        {% endfor %}
+    </div>
+
+
+
+
+
+{% endblock %}

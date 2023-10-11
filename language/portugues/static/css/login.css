@@ -1,0 +1,27 @@
+
+#backG{
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+    background-size: 2100px;
+
+}
+
+#logF{
+    text-align: center;
+    margin: 2rem 5rem 10rem 5rem;
+    font-size: 20px;
+    font-family: 'Young Serif', serif;
+}
+
+#butOne{
+    border:none;
+    color: black;
+    background-color: white;
+    font-size: 20px;
+    width: 10rem;
+}
+
+
+
+

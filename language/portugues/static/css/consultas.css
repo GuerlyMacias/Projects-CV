@@ -1,0 +1,26 @@
+.principal{
+    margin: 50px 50px 50px 50px;
+}
+.buttonsD{
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 20px;
+    margin-right: 1rem;
+    width: 200px;
+    margin-bottom: 3rem;
+
+
+}
+table,th,td{
+    border: 2px solid black;
+    text-align: center;
+}
+th{
+    background-color: black;
+    color: white;
+}
+tr:hover{
+    background-color: #1e96fc;
+    color: white;
+}

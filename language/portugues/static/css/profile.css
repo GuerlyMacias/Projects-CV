@@ -1,0 +1,76 @@
+/*  BOTTOONES FORM  */
+
+
+
+
+
+/*  BOTTOONES ARRIBA  */
+
+
+.template{
+    text-align:center;
+    width: 100vw;
+    height: 95vh;
+
+}
+
+#prueba{
+    margin: 0 auto;
+    background-color: #ffff3f;
+
+    text-align: center;
+    padding:40px;
+    width: 25rem;
+    height: 25rem;
+    border-radius:15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: #1e96fc;
+    font-family: 'Young Serif', serif;
+    margin-bottom: 1rem;
+    justify-content: center;
+
+}
+
+#spacer{
+    width: 2%;
+}
+
+.name{
+    font-family: 'Young Serif', serif;
+    font-size: 10rem;
+    color: #ffff3f;
+    text-shadow: 3px 3px #1e96fc,5px 5px 10px black;
+
+}
+#country{
+    margin-top: 50px;
+    margin-bottom: 0;
+    color: #38b000;
+    text-shadow: 1px 1px 2px black;
+}
+.sized{
+    font-size: 25px;
+}
+.picBut{
+    border: none;
+    box-shadow: 3px 3px 5px #1e96fc;
+    background-color: white;
+}
+#frase{
+    font-size: 20px;
+    color:#38b000 ;
+    
+}
+#mywhy{
+    border: none;
+    background-color: #1e96fc;
+    color: #ffff3f;
+}
+#whP{
+    font-family: 'Young Serif', serif;
+    font-size: 30px;
+    color:#38b000 ;
+    text-shadow: 2px 2px 5px #ffff3f;
+
+
+}

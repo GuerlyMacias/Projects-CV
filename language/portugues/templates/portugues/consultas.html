@@ -1,0 +1,345 @@
+{% extends "portugues/layout.html" %}
+{% load static %}
+{% block title %} Index {% endblock %}
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
+{% endblock %}
+{% block link %}
+    <link href="{% static 'css/consultas.css' %}"  rel="stylesheet"> 
+{% endblock %}
+
+{% block body %}
+    
+    <div class="principal">
+
+        <button class="buttonsD" id="lessons">Lições </button>
+        <button class="buttonsD" id="test">Exames</button>
+        <button class="buttonsD" id="students">Alunos</button>
+        <button class="buttonsD" id="tips">Pontas</button>
+
+
+        <div id="tableLessons" style="visibility: hidden;">
+            <table>
+                    <thead id="headT">
+                    </thead>
+                <tbody id="bodyTL">
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+
+
+
+<!-- script js -->
+<script>
+    
+
+    const lessons = document.querySelector('#lessons')
+    const test = document.querySelector('#test')
+    const students = document.querySelector('#students')
+    const tips = document.querySelector('#tips')
+
+    const table = document.querySelector('#tableLessons')
+
+
+//Primer listener
+    lessons.addEventListener('click',function(){
+        table.style.visibility = 'visible'
+
+        const headT = document.querySelector('#headT')
+        const bodyT = document.querySelector('#bodyTL')
+
+        bodyT.innerHTML = ' '
+        headT.innerHTML = ' '
+
+        const rowHead = document.createElement('tr')
+        const index = document.createElement('th')
+        index.innerHTML = ' INDEX'
+
+        const titleHead = document.createElement('th')
+        titleHead.innerHTML = ' TITLE'
+
+        const urlxLink = document.createElement('th')
+        urlxLink .innerHTML = 'EXTERNAL LINK'
+
+        const videoHead = document.createElement('th')
+        videoHead.innerHTML = 'VIDEO LINK'
+
+        const pathPDF = document.createElement('th')
+        pathPDF.innerHTML = 'PATH PDF'
+
+        rowHead.appendChild(index)
+        rowHead.appendChild(titleHead)
+        rowHead.appendChild(urlxLink)
+        rowHead.appendChild(videoHead)
+        rowHead.appendChild(pathPDF)
+        headT.append(rowHead)
+
+        fetch('lessonsJS')
+        .then(response=>response.json())
+        .then(data=>{
+            for(let i =0; i < data.length; i++){
+                const fieldsX = JSON.parse(JSON.stringify(data[i].fields))
+                const row =document.createElement('tr')
+                const id = document.createElement('td')
+                const title = document.createElement('td')
+                const helpLink = document.createElement('td')
+                const videoLink  =document.createElement('td')
+                const ejercices = document.createElement('td')
+
+                id.innerHTML = fieldsX.number_lesson
+                title.innerHTML = fieldsX.title
+                helpLink.innerHTML = fieldsX.urlx
+                videoLink.innerHTML = fieldsX.videox
+                ejercices.innerHTML = fieldsX.filex
+                row.appendChild(id)
+                row.appendChild(title)
+                row.appendChild(helpLink)
+                row.appendChild(videoLink)
+                row.appendChild(ejercices)
+                bodyT.appendChild(row)
+            }
+        })
+    })
+
+    // Otro AddListener
+    test.addEventListener('click',function(){
+        table.style.visibility = 'visible'
+        const headT = document.querySelector('#headT')
+        const bodyT = document.querySelector('#bodyTL')
+
+        bodyT.innerHTML = ' '
+        headT.innerHTML = ' '
+
+        const rowHead = document.createElement('tr')
+        const index = document.createElement('th')
+        index.innerHTML = 'LESSON LINKED'
+
+        const titleHead = document.createElement('th')
+        titleHead.innerHTML = 'QUESTION'
+
+        const urlxLink = document.createElement('th')
+        urlxLink .innerHTML = 'RIGHT'
+
+        const videoHead = document.createElement('th')
+        videoHead.innerHTML = 'WRONG'
+
+        const pathPDF = document.createElement('th')
+        pathPDF.innerHTML = 'WRONG'
+
+        rowHead.appendChild(index)
+        rowHead.appendChild(titleHead)
+        rowHead.appendChild(urlxLink)
+        rowHead.appendChild(videoHead)
+        rowHead.appendChild(pathPDF)
+        headT.append(rowHead)
+
+        fetch('testJS')
+        .then(response=>response.json())
+        .then(dataT=>{
+            for(let i = 0; i< dataT.length;i++){
+                const fieldsT = JSON.parse(JSON.stringify(dataT[i].fields))
+                const rowT = document.createElement('tr')
+
+                const lessT = document.createElement('td')
+                lessT.innerHTML = fieldsT.lesson
+                const question = document.createElement('td')
+                question.innerHTML = fieldsT.question
+
+                const rigth = document.createElement('td')
+                rigth.innerHTML = fieldsT.correct
+
+                const wrongo = document.createElement('td')
+                wrongo.innerHTML = fieldsT.false_one
+
+                const wrongt = document.createElement('td')
+                wrongt.innerHTML = fieldsT.false_two
+
+
+
+
+
+
+
+                rowT.appendChild(lessT)
+                rowT.appendChild(question)
+                rowT.appendChild(rigth)
+                rowT.appendChild(wrongo)
+                rowT.appendChild(wrongt)
+                bodyT.append(rowT)
+            }
+        })
+    })
+    students.addEventListener('click',function(){
+        table.style.visibility = 'visible'
+        const headT = document.querySelector('#headT')
+        const bodyT = document.querySelector('#bodyTL')
+
+        headT.innerHTML = ' '
+        bodyT.innerHTML = ' '
+
+        const rowU = document.createElement('tr')
+
+        const aprover = document.createElement('th')
+        aprover.innerHTML = 'LESSONSAPROBADAS'
+
+        const aproverP = document.createElement('th')
+        aproverP.innerHTML = '#QUESTIONS'
+
+        const aproverR = document.createElement('th')
+        aproverR.innerHTML = 'ANSWERSRIGHT'
+
+        const nameU = document.createElement('th')
+        nameU.innerHTML = 'USERNAME'
+
+        const emailU = document.createElement('th')
+        emailU.innerHTML = 'E-MAIL'
+
+        const superU = document.createElement('th')
+        superU.innerHTML = 'SUPERUSER'
+
+        const datejoinU = document.createElement('th')
+        datejoinU.innerHTML = 'JOIN DATE'
+
+        const lastjoinU = document.createElement('th')
+        lastjoinU.innerHTML = 'LAST LOGIN'
+
+        rowU.appendChild(aprover)
+        rowU.appendChild(aproverP)
+        rowU.appendChild(aproverR)
+        rowU.appendChild(nameU)
+        rowU.appendChild(emailU)
+        rowU.appendChild(superU)
+        rowU.appendChild(datejoinU)
+        rowU.appendChild(lastjoinU)
+        headT.append(rowU)
+        fetch('userJS')
+        .then(response=>response.json())
+        .then(dataS=>{
+            for(let i = 0; i< dataS.length;i++){
+                const fieldsU = JSON.parse(JSON.stringify(dataS[i].fields))
+                const quanty =document.createElement('td')
+                const quantyP =document.createElement('td')
+                const quantyR =document.createElement('td')
+
+                fetch(`quantyAprov/${fieldsU.username}`)
+                .then(response=>response.json())
+                .then(dataApro=>{
+                    quanty.innerHTML= dataApro.lessonAprob
+                    
+                })
+                fetch(`testingStudent/${fieldsU.username}`)
+                .then(responser=>responser.json())
+                .then(dataP=>{
+                    for(let w = 0;w< dataP.length; w++){
+                    const y = JSON.parse(JSON.stringify(dataP[w]))
+                    quantyP.innerHTML = y.fields.number_questions
+                    quantyR.innerHTML = y.fields.right_answer
+
+                    }
+                    
+                })
+
+
+                const worU = document.createElement('tr')
+                const name =document.createElement('td')
+                const email =document.createElement('td')
+                const superSU =document.createElement('td')
+                const datejoin =document.createElement('td')
+                const lastjoin =document.createElement('td')
+                name.innerHTML = fieldsU.username
+                email.innerHTML = fieldsU.email
+                superSU.innerHTML = fieldsU.is_superuser
+                datejoin.innerHTML = moment(fieldsU.date_joined).format('MMMM Do YYYY, h:mm:ss a')
+                lastjoin.innerHTML = moment(fieldsU.last_login).format('MMMM Do YYYY, h:mm:ss a')
+
+                worU.appendChild(quanty)
+                worU.appendChild(quantyP)
+                worU.appendChild(quantyR)
+                worU.appendChild(name)
+                worU.appendChild(email)
+                worU.appendChild(superSU)
+                worU.appendChild(datejoin)
+                worU.appendChild(lastjoin)
+                bodyT.append(worU)
+            }
+        })
+    })
+    tips.addEventListener('click',function(){
+        table.style.visibility = 'visible'
+        const headT = document.querySelector('#headT')
+        const bodyT = document.querySelector('#bodyTL')
+        headT.innerHTML = ' '
+        bodyT.innerHTML = ' '
+
+        const rowTips = document.createElement('tr')
+        const pkT = document.createElement('th')
+        pkT.innerHTML = 'ID'
+
+        const reac = document.createElement('th')
+        reac.innerHTML = 'REACTIONS'
+
+        const dateCreate = document.createElement('th')
+        dateCreate.innerHTML = 'CREATED'
+
+        const compose = document.createElement('th')
+        compose.innerHTML = 'COMPOSE'
+
+        rowTips.appendChild(pkT)
+        
+        rowTips.appendChild(dateCreate)
+        rowTips.appendChild(reac)
+        rowTips.appendChild(compose)
+
+        headT.append(rowTips)
+
+
+        fetch('tipsJS')
+        .then(response=>response.json())
+        .then(dataN=>{
+            for(let i = 0;i<dataN.length;i++){
+                const worTips = document.createElement('tr')
+                const numb = document.createElement('td')
+                const comp = document.createElement('td')
+                const pkTT = document.createElement('td')
+                const dateCr = document.createElement('td')
+                const datan  =JSON.parse(JSON.stringify(dataN[i].fields))
+                
+
+
+                fetch(`reacter/${dataN[i].pk}`)
+                .then(response=>response.json())
+                .then(dataNT=>{
+                    numb.innerHTML =dataNT.reacts
+                    
+                    
+                    })
+                dateCr.innerHTML = moment(datan.created).format('MMMM Do YYYY, h:mm:ss a')
+
+                pkTT.innerHTML = dataN[i].pk
+                comp.innerHTML = datan.tipers
+                    
+
+
+                    
+                    worTips.appendChild(pkTT)
+                    worTips.appendChild(dateCr)
+                    worTips.appendChild(numb)
+                    worTips.appendChild(comp)
+                    bodyT.append(worTips)
+                
+            }
+        })
+
+
+
+
+
+    })
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+#teste{
+    display: grid;
+    text-align: center;
+    align-content: center;
+    margin-top: 40px;
+    margin-left: 23rem;
+    margin-right: 23rem;
+    width: 60%;
+    height: 760px;
+    border-left: 0.5px solid black;
+    box-shadow: 3px 3px 5px 2px black;
+
+}
+
+.divjsr{
+    width: 40%;
+    background-color: white;
+    margin:0px auto;
+    border-radius: 1rem;
+    border: 2px solid black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.divjs{
+    width: 30%;
+    background-color: white;
+    margin:0px auto;
+    border-radius: 1rem;
+    border: 0.1px solid black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+
+
+}
+.texter{
+    color: black;
+    font-family: 'Nanum Gothic', sans-serif;
+    
+
+}
+.spamer{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.congrat{
+    font-size: 100px;
+    font-family: 'Young Serif', serif;
+    color: #ffff3f;
+    text-shadow:  2px 2px #1e96fc,3px 3px 2px black;
+}
+.contr{
+    font-family: 'Young Serif', serif;
+    font-size: 80px;
+    color: #ffff3f;
+    text-shadow: 1px 1px black;
+
+}
+.num{
+
+    font-size: 80px;
+    color: #ffff3f;
+    text-shadow:  2px 2px #1e96fc,3px 3px 2px black;
+
+}

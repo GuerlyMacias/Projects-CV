@@ -1,0 +1,28 @@
+
+.spacer{
+    margin-left: 3rem;
+}
+#continer{
+    font-family: 'Young Serif', serif;
+    align-content: left;
+    color: white;
+    display: inline-flex;
+    margin-left: 30px;
+    margin-right: 0;
+}
+.whiter{
+    color: white;
+    text-decoration: none;
+}
+.whiter:hover{
+    color: yellow;
+}
+#logout{
+    align-content: right;
+    font-family: 'Young Serif', serif;
+    margin-right: 40px;
+    
+}
+.insiedeBar{
+    background-color: white;
+}

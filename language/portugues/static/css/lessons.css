@@ -1,0 +1,114 @@
+
+.changer{
+    color:#38b000;
+    font-family: 'Young Serif', serif;
+    font-size: 20px;
+    text-shadow: 0.5px 0.5px 0.5px black;
+}
+.margen{
+    text-align: center;
+    width: 10%;
+    height: 100px;
+    background-color:#ffff3f ;
+    margin: 50px 150px 20px 150px;
+    box-shadow: 5px 5px 10px black;
+    border-radius: 5px;
+    border-left: 0.5px solid #1e96fc;
+    border-top: 0.5px solid #1e96fc;
+}
+.muestra{
+    margin: 50px 90px 20px 70px;
+
+}
+
+
+#viewLesson{
+    display: inline-flexbox;
+    margin: 50px 5rem 1rem 5rem;
+    
+    
+}
+.este{
+    margin-left: 1rem;
+    display: grid;
+    text-align: center;
+    align-items: center;
+    background-color: #ffff3f;
+    text-align: center;
+    font-family: 'Young Serif', serif;
+    width: 10rem;
+    height: 2rem;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px #1e96fc;
+    text-shadow: 1px 1px 1px white;
+    color:#38b000;
+
+
+
+}
+.delete{
+    display: grid;
+    float: right;
+    width: 40%;
+    text-align: center;
+    align-items: center;
+    background-color: #d00000;
+    cursor: pointer;
+    border-radius: 1rem;
+    font-family: 'Young Serif', serif;
+    color: white;
+    box-shadow: 5px 5px 10px #202020;
+    
+
+}
+
+.header{
+    font-family: "Young Serif", serif;
+    background-color: #ffff3f;
+    box-shadow: 2px 2px 3px black;
+    padding-left: 30px;
+    color:#38b000;
+    margin-bottom: 2rem;
+    text-shadow: 0.5px 0.5px 0.5px black;
+    border-radius: 5px;
+}
+
+.teoric{
+    font-family: 'Nanum Gothic', sans-serif;
+    text-align: justify;
+
+}
+.butDel{
+    background-color:white ;
+    color: black;
+    border: none;
+}
+.butDel:hover{
+    color: black;
+}
+.este:hover{
+    box-shadow: none;
+}
+.tes{
+    border: none;
+
+}
+#lin{
+    display: inline-flex;
+}
+#ler{
+    font-family: 'Nanum Gothic', sans-serif;
+}
+#mywhy{
+    border: none;
+    background-color: #1e96fc;
+    color: #ffff3f;
+}
+#whP{
+    margin-left: 30px;
+    font-family: 'Young Serif', serif;
+    font-size: 30px;
+    color:#1e96fc ;
+    
+
+}
