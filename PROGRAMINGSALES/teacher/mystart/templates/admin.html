@@ -1,0 +1,86 @@
+{% extends "layout.html"%}
+{%load static%}
+{%block title%} title {%endblock%}
+{%block body%}
+
+    {% if user.is_superuser %}
+    <!-- me toca arreglar este div el pocition fixed no me deja ver y ahora si ya lo quite de navbar -->
+        <div>
+            <h4 style="color: white;">Activity:</h4>
+            <select class="form-select" aria-label="Default select example" name="administrador" id="administrador" style="width: 40vw;">
+                <option selected>Administrador</option>
+                <option value="addstudent">Manage student</option>
+                <option value="addlesson">Add Lesson</option>
+                <option value="addtest">Add Test</option>
+            </select>
+        </div>
+    {%endif%}
+    
+    {% if message %}
+        <h1 style="color: white; margin-left: 50px;">{{message}}</h1>
+    {%endif%}
+    <!-- Apartir de aqui el contenido nosense-->
+    <div id="addstudent" style="visibility: hidden;">
+        <div style="margin: 0; padding: 10px 100px 10px 30px;">
+            <h2 style="color: white;">ADD STUDENTS</h2>
+            <form action="{% url 'createusers' %}" method="post">
+                {% csrf_token%}
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" style="color: white;">Username: </label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="newuser">
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label" style="color: white;">Password: </label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="newpass">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label" style="color: white;">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail" name="newemail">
+                </div>
+                <button type="submit" class="btn btn-primary" style="background-color: rgba(228, 240, 2, 0.949); color: black; border-color: white;">CREAR USUARIO</button>
+            </form>
+            
+        </div> 
+    </div>
+
+    <!-- AGREGAR LESSONS -->
+    <div id="addlesson" style="visibility: hidden;">
+        <h1>ADD LESSONS</h1>
+
+    </div>
+
+    <!-- AGREGAR EXAMENES -->
+    <div id="addtest" style="visibility: hidden;">
+        <h1>ADD TEST</h1>
+
+    </div>
+
+
+<script>
+    document.querySelector("#administrador").onchange =()=>{
+        let acto = document.querySelector("#administrador").value
+        console.log(acto)
+        if(acto == 'addstudent'){
+            document.querySelector(`#${acto}`).style.visibility = 'visible';
+            document.querySelector("#addtest").style.visibility = 'hidden';
+            document.querySelector("#addlesson").style.visibility = 'hidden';
+
+        }
+        else if(acto == 'addlesson'){
+            document.querySelector(`#${acto}`).style.visibility = 'visible';
+            document.querySelector("#addtest").style.visibility = 'hidden';
+            document.querySelector("#addstudent").style.visibility = 'hidden';
+
+        }
+        else if(acto == 'addtest') {
+            document.querySelector(`#${acto}`).style.visibility = 'visible';
+            document.querySelector("#addlesson").style.visibility = 'hidden';
+            document.querySelector("#addstudent").style.visibility = 'hidden';
+
+        }
+        
+
+    }
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{%extends "layout.html" %}
+{%load static%}
+{%block title%}Login{%endblock%}
+{%block body%}
+    <div style="display: grid; place-items: center;margin-top: 100px;">
+        <form action="{% url 'index' %}" method="post">
+            {%csrf_token%}
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label" style="color: white;">Username: </label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="student">
+            <div id="emailHelp" class="form-text">La diversion apenas comienza y tu seras protagonista</div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label" style="color: white;">Password: </label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="pas">
+            </div>
+            <button type="submit" class="btn btn-primary" style="background-color: white; color:blueviolet">Submit</button>
+        </form> 
+    </div>
+    <br>
+    <br>
+    <br>
+    {% if message %}
+        <div class="alert alert-light" role="alert" style="margin-left: 390px; margin-right: 390px;">
+        {{message}}
+        </div>
+    {%endif%}
+    <!-- Ojo a como coloque un pie de pagina con style -->
+    <footer>
+        <p style="color: white; margin-left: 30px; position: fixed;left: 0;bottom: 0; font-size: x-small;"> Photo: <a href="http://www.freepik.com">Designed by pikisuperstar / Freepik</a></p>
+    </footer>
+{%endblock%}
