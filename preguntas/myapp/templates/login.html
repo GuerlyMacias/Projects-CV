@@ -1,0 +1,42 @@
+{% extends 'layout.html'%}
+{%block link%}
+{%load static%}
+    <link rel="stylesheet" href="{% static 'colores.css' %}">
+{%endblock%}
+
+{% block body%}
+    <div id="entrada" style="margin: 30px 30px 30px 30px;" >
+        <h2>ENTRAR</h2>
+        <form action="{% url 'loginV'%}" method="post">
+            {% csrf_token %}
+            <label>Usuario</label>
+            <input type="text" name="myuser">
+            <label>Codigo</label>
+            <input type="password" name="codigo">
+            <button type="submit">Entrar</button>
+        </form>
+        <br>
+    </div>
+    <div id="regstro" style="margin: 30px 30px 30px 30px;">
+        <h2>REGRISTRAR</h2>
+        <form action="{% url 'registro' %}" method="post">
+            {% csrf_token %}
+            <label>Usuario</label>
+            <input type="text" name="newuser">
+            <label>Codigo</label>
+            <input type="password" name="newcodigo">
+            <label>AUTORIZATION</label>
+            <input type="password" name="autho">
+            <button type="submit">Registar</button>
+        </form>
+    </div>
+
+    {%if message %}
+        <h1 style="color:blue;">{{message}}</h1>
+    {%endif%}
+
+<script>
+
+
+</script>
+{% endblock %}
